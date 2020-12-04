@@ -2,7 +2,7 @@ package defs
 
 type Err struct{
 	Error string `json:"error"`
-	ErrorCode sting `json:"error_code"`
+	ErrorCode string `json:"error_code"`
 }
 
 type ErrorResponse struct{
