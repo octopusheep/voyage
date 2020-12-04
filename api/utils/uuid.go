@@ -9,7 +9,7 @@ import (
 
 func NewUUID()(string,error){
 	uuid:=make([]byte,16)
-	n,err:=io.Readfull(rand.Reader,uuid)
+	n,err:=io.ReadFull(rand.Reader,uuid)
 	if n!=len(uuid)||err!=nil{
 		return "",err
 	}
