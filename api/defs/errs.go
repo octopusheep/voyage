@@ -10,7 +10,7 @@ type ErrorResponse struct{
 	Error Err
 }
 
-var{
+var(
 	ErrorRequestBodyParseFailed =ErrorResponse{HttpSC:400,Error: Err{Error:"Request body is not correct.",ErrorCode:"001"}}
 	ErrorNotAuthUser=ErrorResponse{HttpSC:401,Error:Err{Error:"User authentication failed.",ErrorCode:"002"}}
-}
+)
