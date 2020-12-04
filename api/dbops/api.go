@@ -104,12 +104,12 @@ func GetVideoInfo(vid string)(*defs.VideoInfo,error){
 	}
 	defer stmtOut.Close()
 
-	res:=&defs.VideoInfo{Id: vid,AuthorId: aid,Name: name,DisplayCtime: ctime}
+	res:=&defs.VideoInfo{Id: vid,AuthorId: aid,Name: name,DisplayCtime: dct}
 
 	return res,nil
 }
 
-func DeleteVideoInfo(vid string)(*defs.VideoInfo,error){
+func DeleteVideoInfo(vid string)error{
 	stmtDel,err:=dbConn.Prepare("DELETE FROM video_info WHERE id=?")
 	if err!=nil{
 		log.Printf("DeleteVideoInfo error:%s",err)
