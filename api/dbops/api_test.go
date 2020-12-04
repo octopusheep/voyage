@@ -4,6 +4,8 @@ import(
 	"testing"
 )
 
+var tempvid string
+
 // init(dblogin,truncate tables)->run tests -> clear data(truncate tables)
 
 func clearTables(){
