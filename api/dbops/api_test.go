@@ -58,3 +58,43 @@ func testRegetUser(t *testing.T){
 		t.Errorf("Deleting user test failed")
 	}
 }
+
+func TestVideoWorkFlow(t *testing.T){
+	clearTables()
+	t.Run("PrepareUser",testAddUser)
+	t.Run("AddVideo",testgetUser)
+	t.Run("GetVideo",testgetUser)
+	t.Run("DeleteVideo",testDeleteUser)
+	t.Run("RegetVideo",testRegetUser)
+
+}
+
+func testAddNewVideo(t *testing.T){
+	vi,err:=AddNewVideo(1,"my-video")
+	if err!=nil{
+		t.Errorf("Error of AddVideo: %v",err)
+	}
+
+	tempvid=vi.Id
+}
+
+func testgetVideoInfo(t *testing.T){
+	_,err:=GetVideoInfo(tempvid)
+	if err!=nil{
+		t.Errorf("Error of getVideo:%v",err)
+	}
+}
+
+func testDeleteVideoInfo(t *testing.T){
+	err:=DeleteVideoInfo(tempvid)
+	if err!=nil{
+		t.Errorf("Error of DeleteVideoInfo: %v",err)
+	}
+}
+
+func testRegetVideoInfo(t *testing.T){
+	vi,err:=GetVideoInfo(tempvid)
+	if err!=nil||vi!=nil{
+		t.Errorf("Error of RegetVideo: %v",err)
+	}
+}
