@@ -126,7 +126,7 @@ func testAddComments(t *testing.T){
 func testListComments(t *testing.T){
 	vid:="12345"
 	from:=1514764800
-	to,_:=strconv.Atoi(strconv.FromInt(time,Now().UnixNano()/1000000000,10))
+	to,_:=strconv.Atoi(strconv.FormatInt(time.Now().UnixNano()/1000000000,10))
 
 	res,err:=ListComments(vid,from,to)
 	if err!=nil{
@@ -135,11 +135,6 @@ func testListComments(t *testing.T){
 
 	for i,ele :=range res{
 		fmt.Printf("comments: %d,%v \n",i,ele)
-	}
-	err:=AddNewComments(vid,aid,content)
-
-	if err!= nil{
-		t.Errorf("Error of AddComments: %v",err)
 	}
 }
 

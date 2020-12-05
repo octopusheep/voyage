@@ -136,7 +136,7 @@ func AddNewComments(vid string,aid int,content string)error{
 	if err!=nil{
 		return err
 	}
-	_,err:=stmtIns.Exec(id,vid,aid,content)
+	_,err=stmtIns.Exec(id,vid,aid,content)
 	if err!=nil{
 		return err
 	}
@@ -145,7 +145,7 @@ func AddNewComments(vid string,aid int,content string)error{
 	return nil
 }
 
-func ListComments(vid string, from,to int)([]*defs.Comment,err){
+func ListComments(vid string, from,to int)([]*defs.Comment,error){
 	stmtOut,err:=dbConn.Prepare(`SELECT comments.id,users.login_name, comments.content 
 		FROM comments INNER JOIN users ON comments.author_id=users.id WHERE comments.video_id=? AND comments.time > FROM_UNIXTIME(?) AND comments.time<=FROM_UNIXTIME(?)`)
 
@@ -168,7 +168,7 @@ func ListComments(vid string, from,to int)([]*defs.Comment,err){
 
 	defer stmtOut.Close()
 
-	return res.nil
+	return res,nil
 	// users join comments -> author id,video id
 }
 
